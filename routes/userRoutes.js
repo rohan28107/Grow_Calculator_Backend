@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {User} = require('../model/User.model');
 const {Profile} = require('../model/User.model.js');
-const { Calculation } = require('../model/calculation.model');
+const { Calculation } = require('../model/Calculation.model');
 
 
 // const app = express();
