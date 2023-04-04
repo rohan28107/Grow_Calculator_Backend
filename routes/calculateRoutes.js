@@ -1,7 +1,4 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const {User} = require('../model/User.model');
+const { Calculation } = require('../model/Calculation.model');
 
 
 userRouter.post('/calculate', async(req, res) =>{
@@ -12,6 +9,16 @@ userRouter.post('/calculate', async(req, res) =>{
         const maturityValue = annualInstalmentAmount * ((Math.pow((1 + rateOfInterest), totalNumberOfMonths) - 1) / rateOfInterest);
         const totalInvestmentAmount = annualInstalmentAmount * totalNumberOfYears;
         const totalInterestGained = maturityValue - totalInvestmentAmount;
+
+        const calculation = new Calculation({
+            annualInstalmentAmount,
+            annualInterestRate,
+            totalNumberOfYears,
+            totalInterestGained,
+            totalInvestmentAmount,
+            maturityValue
+        })
+        await calculation.save();
         return res.json({
             totalInvestmentAmount,
             totalInterestGained,

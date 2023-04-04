@@ -8,18 +8,18 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// const profileSchema = new mongoose.Schema({
-//     userId: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: 'User',
-//         required: true,
-//         unique: true
-//     }
-// })
+const profileSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        unique: true
+    }
+})
 
-// const Profile = mongoose.model('Profile', profileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
 
 module.exports = {
     User,
-    // Profile
+    Profile
 }
